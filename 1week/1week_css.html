@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로그인페이지</title>
+    <style>
+			/* 태그명을 바로 가리킬 때 */
+	    body {
+	    	background-color: black;
+	    	color: white;
+        /* 폰트 색상 : color */
+        font-size: 13px;
+	    }
+      div, input, button, a {
+        color: green;
+      }
+      div input {
+        /* div 태그 안에 있는 자식 input 태그에 영향 */
+        color: orange;
+      }
+      div > input {
+        /* div 태그 안에 있는 바로 직전 자식 input 태그 */
+        color: yellowgreen;
+      }
+			/* class selector를 만들어 가리킬 때 */
+	    .mytitle, .mytitle2 {
+	    	color: yellow;
+	    }
+      /* id selector */
+      #mytitle, #mytitle2 {
+        color: red;
+      }
+
+      .login-button {
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        margin-left: 40px;
+
+        margin: 10px 20px 30px 40px;
+        margin: 10px 20px;
+
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 30px;
+        padding-left: 40px;
+
+        padding: 10px 20px 30px 40px;
+        padding: 10px 20px;
+      }
+   	</style>
+</head>
+<body>
+    <div>
+      <input />
+
+      <button>
+        <input />
+      </button>
+    </div>
+
+    <input />
+
+    <h1 class="mytitle">
+    	로그인 페이지
+  	</h1>
+    <div class="mytitle">
+    	ID: 
+    	<input type="text">
+    	PW: 
+    	<input type="password">   
+   	</div>
+   	<button class="login-button">로그인하기</button>
+</body>
+</html>
