@@ -57,7 +57,15 @@ def test(a = 10):
 test(20)
 
 
+if a is not True:
+    print(a)
+else:
+    print(b)
 
-
+a = "10"
+if a == 10:
+    print(a)
+else:
+    print(b)
 
 
