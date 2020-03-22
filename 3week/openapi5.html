@@ -59,7 +59,7 @@
           data: {},
           success: function(response) {
             let articles = response["articles"];
-            let data = articles[0];
+            let data = articles[Math.floor(Math.random() * articles.length)];
 
             console.log(data);
 
