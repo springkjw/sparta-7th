@@ -14,11 +14,12 @@ soup = BeautifulSoup(data.text, 'html.parser')
 # (입맛에 맞게 코딩)
 #############################
 movies = soup.select('#old_content > table > tbody > tr')
-
+rank = 1
 for movie in movies:
     # movie 안에 a 가 있으면,
     a_tag = movie.select_one('td.title > div > a')
     point = movie.select_one('td.point')
     if a_tag is not None:
         # a의 text를 찍어본다.
-        print (a_tag.text, point.text)
+        print(rank, a_tag.text, point.text)
+        rank = rank + 1
