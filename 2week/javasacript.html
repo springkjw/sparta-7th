@@ -116,3 +116,31 @@
 </body>
 
 </html>
+
+$.ajax({
+  type: 'GET',
+  url: 'naver.com?id=springkjw&pw=123456&name=jaewon',
+  data: {},
+  success: function(response) {
+    
+  },
+  error: function(error) {
+
+  },
+})
+
+$.ajax({
+  type: 'POST',
+  url: '...',
+  data: {
+    id: 'springkjw',
+    pwd: '12345'
+  },
+  headers: {},
+  success: function(response) {
+
+  },
+  error: function(error) {
+
+  }
+})
