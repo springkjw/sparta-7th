@@ -27,6 +27,8 @@
               let data = response[0];
               let url = data["url"];
               $('#img-cat').attr('src', url);
+              $('#img-cat').attr('width', 300);
+              $('#img-cat').attr('height', 300);
             }
           },
         })
