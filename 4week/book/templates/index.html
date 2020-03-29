@@ -73,7 +73,14 @@
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        alert(response['msg']);
+                        let data = response['data'];
+
+                        for (let i = 0; i < data.length; i++) {
+                            let title = data[i]["title"];
+                            let author = data[i]["author"];
+                            let review = data[i]["review"];
+                            make_card(title, author, review);
+                        }
                         // 2. 성공했을 때 리뷰를 올바르게 화면에 나타내기
                     } else {
                         alert('리뷰를 받아오지 못했습니다');

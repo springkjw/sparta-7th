@@ -27,7 +27,12 @@ def write_review():
 
 @app.route('/reviews', methods=['GET'])
 def read_reviews():
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
+    books = list(db.books.find({}, {"_id": 0}))
+    return jsonify({
+        'result':'success',
+        'msg': '이 요청은 GET!',
+        'data': books
+    })
 
 
 if __name__ == '__main__':
