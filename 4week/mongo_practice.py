@@ -18,6 +18,17 @@ def question2():
     for movie in movies:
         print(movie["title"])
 
+def question3():
+    # 어벤져스: 엔드게임 과 평점이 같은 영화의 평점을 0으로 만들어라
+    avengers = db.movies.find_one({"title": "어벤져스: 엔드게임"})
+    avengers_star = avengers["star"]
+    # 어벤져스랑 평점이 같은 영화 조회 후 수정
+    db.movies.update_many(
+        {"star": avengers_star},
+        {"$set": {"star": 0}}
+    )
+
 if __name__ == "__main__":
     # question1()
-    question2()
+    # question2()
+    question3()
