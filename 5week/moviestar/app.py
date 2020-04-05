@@ -42,8 +42,7 @@ def star_like():
     {"name": name_receive},
     {"$set": {"like": new_like}}
   )
-
-	return jsonify({'result': 'success','msg':'like 연결되었습니다!'})
+  return jsonify({'result': 'success','msg':'like 연결되었습니다!'})
 
 
 @app.route('/api/delete', methods=['POST'])
