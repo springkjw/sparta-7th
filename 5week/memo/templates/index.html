@@ -63,7 +63,20 @@
     }
 
     function make_card(comment, desc, image, title, url) {
+      let html = `
+        <div class="card">
+          <img class="card-img-top"
+            src="${image}"
+            alt="Card image cap">
+          <div class="card-body">
+            <a href="${url}" class="card-title">${title}</a>
+            <p class="card-text">${desc}</p>
+            <p class="card-text comment">${comment}</p>
+          </div>
+        </div>
+      `;
 
+      $('#cards-box').append(html);
     }
 
     function posting() {
