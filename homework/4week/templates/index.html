@@ -31,7 +31,22 @@
                 type: 'GET',
                 data: {},
                 success: function(response) {
-                    console.log(response);
+                    for (let i = 0; i < response.length; i++) {
+                        let name = response[i]["name"];
+                        let amount = response[i]["amount"];
+                        let address = response[i]["address"];
+                        let phone = response[i]["phone"];
+
+                        let html = `
+                            <tr>
+                                <td>${name}</td>
+                                <td>${amount}</td>
+                                <td>${address}</td>
+                                <td>${phone}</td>
+                            </tr>
+                        `;
+                        $('#orders-box').append(html);
+                    }
                 },
             })
         }

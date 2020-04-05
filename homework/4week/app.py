@@ -12,7 +12,7 @@ def home():
 
 @app.route('/order', methods=["GET"])
 def order_get():
-    orders = list(db.orders.find())
+    orders = list(db.orders.find({}, {"_id": 0}))
     return jsonify({
         "orders": orders
     })
