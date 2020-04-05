@@ -1,8 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
+client = MongoClient('localhost', 27017)
+db = client.dbsparta
 
 @app.route('/')
 def home():
@@ -20,6 +23,14 @@ def memo_post():
   og_title = soup.select_one('meta[property="og:title"]')
   og_description = soup.select_one('meta[property="og:description"]')
   og_image = soup.select_one('meta[property="og:image"]')
+
+  db.memo.insert_one({
+    "title": og_title,
+    "description": og_description,
+    "image": og_image,
+    "url": url_received,
+    "comment": comment_received
+  })
 
   return
 
