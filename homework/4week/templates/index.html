@@ -31,11 +31,12 @@
                 type: 'GET',
                 data: {},
                 success: function(response) {
-                    for (let i = 0; i < response.length; i++) {
-                        let name = response[i]["name"];
-                        let amount = response[i]["amount"];
-                        let address = response[i]["address"];
-                        let phone = response[i]["phone"];
+                    let orders = response["orders"];
+                    for (let i = 0; i < orders.length; i++) {
+                        let name = orders[i]["name"];
+                        let amount = orders[i]["amount"];
+                        let address = orders[i]["address"];
+                        let phone = orders[i]["phone"];
 
                         let html = `
                             <tr>
