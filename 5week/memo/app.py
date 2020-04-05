@@ -11,11 +11,15 @@ db = client.dbsparta
 def home():
   return render_template('index.html')
 
+@app.route('/memo', methods=["GET"])
+def memo_get():
+  memos = list(db.memo.find({}, {"_id": 0}))
+  return jsonify(memos)
+
 @app.route('/memo', methods=["POST"])
 def memo_post():
   url_received = request.form.get('url', None)
   comment_received = request.form.get('comment', '')
-  print(url_received, comment_received)
 
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
   data = requests.get(url_received, headers=headers)
