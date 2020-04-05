@@ -11,10 +11,11 @@ db = client.dbsparta
 def home():
   return render_template('index.html')
 
-@app.route('/memo')
+@app.route('/memo', methods=["POST"])
 def memo_post():
   url_received = request.form.get('url', None)
   comment_received = request.form.get('comment', '')
+  print(url_received, comment_received)
 
   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
   data = requests.get(url_received, headers=headers)
@@ -24,15 +25,19 @@ def memo_post():
   og_description = soup.select_one('meta[property="og:description"]')
   og_image = soup.select_one('meta[property="og:image"]')
 
+  title = og_title["content"]
+  description = og_description["content"]
+  image = og_image["content"]
+
   db.memo.insert_one({
-    "title": og_title,
-    "description": og_description,
-    "image": og_image,
+    "title": title,
+    "description": description,
+    "image": image,
     "url": url_received,
     "comment": comment_received
   })
 
-  return
+  return jsonify({"success": True})
 
 if __name__ == "__main__":
   app.run('0.0.0.0', port=5000, debug=True)
