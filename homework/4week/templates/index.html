@@ -36,6 +36,26 @@
             })
         }
 
+        function order() {
+            let name = $('#order_name').val();
+            let amount = $('#order_amount').val();
+            let address = $('#order_address').val();
+            let phone = $('#order_phone').val();
+
+            $.ajax({
+                url: '/order',
+                type: 'POST',
+                data: {
+                    name: name,
+                    amount: amount,
+                    address: address,
+                    phone: phone
+                },
+                success: function(response) {
+
+                },
+            })
+        }
       // function isCellPhone(p) {
       //   var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
       //   return regExp.test(p);

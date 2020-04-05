@@ -19,10 +19,10 @@ def order_get():
 
 @app.route('/order', methods=["POST"])
 def order_post():
-    name = request.form["name"]
-    amount = request.form["amount"]
-    address = request.form["address"]
-    phone = request.form["phone"]
+    name = request.form.get('name', '')
+    amount = request.form.get('amount', 0)
+    address = request.form.get('address', '')
+    phone = request.form.get('phone', '')
 
     print(name, amount, address, phone)
 
