@@ -24,7 +24,12 @@ def order_post():
     address = request.form.get('address', '')
     phone = request.form.get('phone', '')
 
-    print(name, amount, address, phone)
+    db.orders.insert_one({
+        "name": name,
+        "amount": amount,
+        "address": address,
+        "phone": phone
+    })
 
     return jsonify({"success": "OK"})
 
