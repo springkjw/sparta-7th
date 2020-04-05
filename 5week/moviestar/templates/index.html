@@ -105,7 +105,8 @@
               },
               success: function (response) {
                   if (response['result'] == 'success') {
-										window.location.reload();
+										$('#star-box').empty();
+                    show_star();
                   }
               }
           });
@@ -120,7 +121,8 @@
               },
               success: function (response) {
                   if (response['result'] == 'success') {
-										window.location.reload();
+                    $('#star-box').empty();
+                    show_star();
                   }
               }
           });
