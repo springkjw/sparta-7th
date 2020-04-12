@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, request, render_template, jsonify
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -13,6 +13,18 @@ def home():
 def movie_star_list():
     mystar = list(db.mystar.find({}, {'_id': 0}))
     return jsonify(mystar)
+
+@app.route('/api/like', methods=["POST"])
+def movie_star_like():
+    name_receive = request.form['name_give']
+    moviestar = db.mystar.find_one({'name': name_receive})
+    moviestar_like = moviestar['like']
+
+    db.mystar.update_one(
+        {'name': name_receive},
+        {'$set': {'like': moviestar_like + 1}}
+    )
+    return jsonify({'success': True})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
