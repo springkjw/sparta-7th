@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 
 app = Flask(__name__)
 client = MongoClient('localhost', 27017)
@@ -11,7 +11,11 @@ def home():
 
 @app.route('/api/list', methods=["GET"])
 def movie_star_list():
-    mystar = list(db.mystar.find({}, {'_id': 0}))
+    mystar = list(
+        db.mystar.find({}, {'_id': 0}).sort(
+            [("like", DESCENDING)]
+        )
+    )
     return jsonify(mystar)
 
 @app.route('/api/like', methods=["POST"])
