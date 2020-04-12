@@ -71,7 +71,7 @@
                             </div>
                           </div>
                           <footer class="card-footer">
-                            <a href="#" onclick="like_star('김다미')" class="card-footer-item has-text-info">
+                            <a href="#" onclick="like_star('${name}')" class="card-footer-item has-text-info">
                               위로!
                               <span class="icon">
                                 <i class="fas fa-thumbs-up"></i>
@@ -101,10 +101,7 @@
                 'name_give': name,
               },
               success: function (response) {
-                  if (response['result'] == 'success') {
-										let msg = response['msg'];
-										alert(msg);
-                  }
+                  window.location.reload();
               }
           });
       }
