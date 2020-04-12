@@ -9,9 +9,9 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
-@app.route('/app/list', methods=["GET"])
+@app.route('/api/list', methods=["GET"])
 def movie_star_list():
-    mystar = list(db.mystar.find({}, {'_id', 0}))
+    mystar = list(db.mystar.find({}, {'_id': 0}))
     return jsonify(mystar)
 
 if __name__ == '__main__':

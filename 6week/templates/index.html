@@ -43,10 +43,7 @@
 			      url:  '/api/list',
 			      data: {},
 			      success: function (response) {
-							if (response['result'] == 'success') {
-								let msg = response['msg'];
-								alert(msg);
-							}
+                    console.log(response);
 			      }
 			  });
 			}
