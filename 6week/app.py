@@ -30,5 +30,11 @@ def movie_star_like():
     )
     return jsonify({'success': True})
 
+@app.route('/api/delete', methods=["POST"])
+def movie_star_delete():
+    name_receive = request.form['name_give']
+    db.mystar.delete_one({'name': name_receive})
+    return jsonify({'success': True})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
